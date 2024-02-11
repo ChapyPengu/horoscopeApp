@@ -1,12 +1,16 @@
-package com.example.horoscoapp
+package com.example.horoscoapp.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.example.horoscoapp.R
 import com.example.horoscoapp.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -17,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initUI()
+        enableLightMode()
     }
 
     private fun initUI() {
@@ -29,6 +34,9 @@ class MainActivity : AppCompatActivity() {
         binding.bnv.setupWithNavController(navController)
     }
 
+    private fun enableLightMode() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+    }
 
 
 }
